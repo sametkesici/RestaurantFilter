@@ -1,23 +1,30 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./routes/Home";
-import UptadePage from "./routes/UptadePage";
 import RestaurantDetailPage from "./routes/RestaurantDetailPage";
-import { RestaurantContextProvider } from "./context/RestaurantsContext";
-
+import { RestaurantsContextProvider } from "./context/RestaurantsContext";
+import UptadePage from "./routes/UptadePage";
 const App = () => {
   return (
-    <RestaurantContextProvider>
+    <RestaurantsContextProvider>
       <div className="container">
         <Router>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/restaurants/:id/update" component={UptadePage} />
-            <Route path="/restaurants/:id" component={RestaurantDetailPage} />
+            <Route
+              exact
+              path="/restaurants/:id/update"
+              component={UptadePage}
+            />
+            <Route
+              exact
+              path="/restaurants/:id"
+              component={RestaurantDetailPage}
+            />
           </Switch>
         </Router>
       </div>
-    </RestaurantContextProvider>
+    </RestaurantsContextProvider>
   );
 };
 
